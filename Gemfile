@@ -12,5 +12,14 @@ group :development do
   gem 'guard-rake',  :require => false
 end
 
-gem 'puppet', :require => false
+if facterversion = ENV['FACTER_GEM_VERSION']
+  gem 'facter', facterversion, :require => false
+else
+  gem 'facter', :require => false
+end
 
+if puppetversion = ENV['PUPPET_GEM_VERSION']
+  gem 'puppet', puppetversion, :require => false
+else
+  gem 'puppet', :require => false
+end
